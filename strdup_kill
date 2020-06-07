@@ -1,0 +1,1 @@
+gcc strdup_test.c ../libasm.a && python kill_malloc/mc.py
