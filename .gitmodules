@@ -1,0 +1,3 @@
+[submodule "kill_malloc"]
+	path = kill_malloc
+	url = https://github.com/ataguiro/mc.git
