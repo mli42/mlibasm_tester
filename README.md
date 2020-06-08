@@ -4,7 +4,10 @@
 
 Go in your libasm repository and :
 
-`git clone --recurse-submodules https://github.com/mli42/mlibasm_tester.git`
+```bash
+git clone --recurse-submodules https://github.com/mli42/mlibasm_tester.git &&
+cd ./mlibasm_tester/ && ./do.sh
+```
 
 To test `errno` on `ft_strdup` : `./strdup_kill` and see if `errno == ENOMEM`
 
@@ -12,8 +15,8 @@ To test `errno` on `ft_strdup` : `./strdup_kill` and see if `errno == ENOMEM`
 - [ ] ft_strlen
 - [ ] ft_strcpy
 - [ ] ft_strcmp
-- [ ] ft_write
-- [ ] ft_read
+- [x] ft_write
+- [x] ft_read
 - [ ] ft_strdup
 
 ## Bonus (from the piscine)
