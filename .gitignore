@@ -53,3 +53,4 @@ dkms.conf
 
 .sym_logs
 a.out.infected
+output
