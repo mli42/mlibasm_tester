@@ -1,5 +1,10 @@
 # mlibasm_tester
 
+<p align="center">
+  <img src="https://github.com/mli42/mlibasm_tester/blob/master/mlibasm.png"
+       title="mlibasm img">
+</p>
+
 ## Usage
 
 Go in your libasm repository and :
