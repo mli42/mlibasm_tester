@@ -1,14 +1,8 @@
-#include <assert.h>
-#include <errno.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include "libasm.h"
+#include "mlibasm_test.h"
 
-#define MAKEITABORT 0
 // Globals
-int g_all = 26, g_wr_all = 12, g_rd_all = 14;
-int g_done = 0, g_fail = 0, g_wr = 0, g_rd = 0;
+int g_all = 26, g_wr_all = 12, g_rd_all = 14, g_strcmp_all = 0;
+int g_done = 0, g_fail = 0, g_wr = 0, g_rd = 0, g_strcmp = 0;
 int wrfd = 0, rdfd = 0, rdfd_true = 0;
 char	err_buff[1024];
 
@@ -32,6 +26,7 @@ void	ft_destructor(void)
 	done_on_all("Total", g_done - g_fail, g_all);
 	done_on_all("ft_write", g_wr, g_wr_all);
 	done_on_all("ft_read", g_rd, g_rd_all);
+	done_on_all("ft_strcmp", g_strcmp, g_strcmp_all);
 
 	close(wrfd);
 	close(rdfd);
@@ -77,90 +72,6 @@ char	*which_fd(int fd)
 	return ("fakefd");
 }
 
-int		test_write(const int fd, const char * const str, const int size)
-{
-	int ret[2];
-	int eq[2];
-	int err[2];
-	int all_good;
-
-	errno = 0; bzero(err_buff, sizeof(err_buff));
-	ret[0] = ft_write(fd, str, size);
-	err[0] = errno; errno = 0;
-	ret[1] = write(fd, str, size);
-	err[1] = errno;
-	eq[0] = (ret[0] == ret[1]); eq[1] = (err[0] == err[1]);
-	if ((all_good = (eq[0] && eq[1] ? 1 : 0)))
-		g_wr++;
-	else
-		sprintf(err_buff, "ft_write(%d[%s], '%s', %d)",
-				fd, which_fd(fd), str, size);
-	truefalse(all_good, ret, err);
-	return (all_good);
-}
-
-int		test_read(const int fd_me, const int fd_true, const int size)
-{
-	char buf[2][1024];
-	int err[2];
-	int ret[2];
-	int eq[2];
-	int all_good;
-
-	errno = 0; bzero(err_buff, sizeof(err_buff));
-	bzero(buf[0], sizeof(buf[0]));
-	bzero(buf[1], sizeof(buf[1]));
-	ret[0] = ft_read(fd_me, buf[0], size);
-	err[0] = errno; errno = 0;
-	ret[1] = read(fd_true, buf[1], size);
-	err[1] = errno;
-	eq[0] = (ret[0] == ret[1]); eq[1] = (err[0] == err[1]);
-	if ((all_good = (eq[0] && eq[1] && !strcmp(buf[0], buf[1]) ? 1 : 0)))
-		g_rd++;
-	else
-		sprintf(err_buff, "ft_read(%d[%s], buff_eq:%s, %d)",
-			fd_me, which_fd(fd_me), tf_str(all_good), size);
-	truefalse(all_good, ret, err);
-	return (all_good);
-}
-
-void	wr_tests(void)
-{
-	test_write(9, "Hello", 5);
-	test_write(wrfd, "Hello!", 6);
-	test_write(wrfd, NULL, 5);
-	test_write(-1, NULL, 5);
-	test_write(wrfd, "ABCEDFGEFGH", 9);
-	test_write(9, "ABCEDFGEFGH", 9);
-	test_write(wrfd, NULL, -1);
-	test_write(wrfd, "A longer sentence!", 18);
-
-	test_write(rdfd, "Hello!", 6);
-	test_write(rdfd, NULL, 5);
-	test_write(rdfd, NULL, -1);
-	test_write(rdfd, "A longer sentence!", 18);
-}
-
-void	rd_tests(void)
-{
-	test_read(9, 9, 5);
-	test_read(9, 9, 9);
-
-	test_read(rdfd, rdfd_true, 5);
-	test_read(rdfd, rdfd_true, 1);
-	test_read(rdfd, rdfd_true, 9);
-	test_read(rdfd, rdfd_true, 7);
-	test_read(rdfd, rdfd_true, 18);
-	test_read(rdfd, rdfd_true, 30);
-
-	test_read(wrfd, wrfd, 5);
-	test_read(wrfd, wrfd, 1);
-	test_read(wrfd, wrfd, 9);
-	test_read(wrfd, wrfd, 7);
-	test_read(wrfd, wrfd, 18);
-	test_read(wrfd, wrfd, 30);
-}
-
 static int	init(void)
 {
 	if ((wrfd = open("output", O_WRONLY | O_CREAT | O_TRUNC,
@@ -184,4 +95,5 @@ int		main(void)
 //		signal(SIGABRT, ft_signal);
 	wr_tests();
 	rd_tests();
+	strcmp_tests();
 }

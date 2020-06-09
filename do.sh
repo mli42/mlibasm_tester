@@ -4,6 +4,8 @@ libasm_path='../'
 libasm=$libasm_path'libasm.a'
 incl_path=$libasm_path
 
+test_files='test.c unit_tests.c performed_tests.c'
+
 recompile () {
 	if ! make bonus -C $libasm_path 1>/dev/null 2>/dev/null ; then
 		printf "\e[0;91m\t\tCOULD'T COMPILE BONUS !!\e[0m\n" >&2
@@ -11,7 +13,7 @@ recompile () {
 			printf "\e[0;91m\t\tCOULD'T COMPILE !!\e[0m\n" >&2  && return 1
 		fi
 	fi
-	if ! clang -Wall -Wextra -Werror -I $incl_path test.c $libasm ; then
+	if ! clang -Wall -Wextra -Werror -I $incl_path $test_files $libasm ; then
 		printf "\e[0;91m\t\tCOULD'T COMPILE BINARY !!\e[0m\n" >&2  && return 1
 	fi
 }
