@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlibasm_test.h                                     :+:      :+:    :+:   */
+/*   mlibasm.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:06:51 by mli               #+#    #+#             */
-/*   Updated: 2020/06/09 19:19:26 by mli              ###   ########.fr       */
+/*   Updated: 2020/06/09 21:41:01 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MLIBASM_TEST_H
-# define MLIBASM_TEST_H
+#ifndef MLIBASM_H
+# define MLIBASM_H
 
 // #include <assert.h>
 #include <errno.h>
@@ -21,6 +21,7 @@
 #include "libasm.h"
 
 // # define MAKEITABORT 0
+# define CHECKLEAKS 1
 
 typedef struct	s_tests
 {
@@ -56,6 +57,8 @@ void	strcmp_tests(void);
 int		test_write(const int fd, const char * const str, const int size);
 int		test_read(const int fd_me, const int fd_true, const int size);
 int		test_strcmp(const char * const s1, const char * const s2);
+
+void	check_leaks(void);
 
 #endif
 

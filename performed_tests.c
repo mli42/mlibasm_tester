@@ -1,4 +1,4 @@
-#include "mlibasm_test.h"
+#include "mlibasm.h"
 
 void	wr_tests(void)
 {

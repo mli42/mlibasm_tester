@@ -4,7 +4,7 @@ libasm_path='../'
 libasm=$libasm_path'libasm.a'
 incl_path=$libasm_path
 
-test_files='test.c unit_tests.c performed_tests.c'
+test_files='test.c unit_tests.c performed_tests.c utils.c'
 
 recompile () {
 	if ! make bonus -C $libasm_path 1>/dev/null 2>/dev/null ; then

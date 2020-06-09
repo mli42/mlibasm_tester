@@ -16,6 +16,10 @@ cd ./mlibasm_tester/ && ./do.sh
 
 To test `errno` on `ft_strdup` : `./strdup_kill` and see if `errno == ENOMEM`
 
+Checks leaks by using `/usr/bin/leaks`
+
+`#define CHECKLEAKS 0` (in `mlibasm.h`) to disable it
+
 ## Functions
 - [ ] ft_strlen
 - [ ] ft_strcpy

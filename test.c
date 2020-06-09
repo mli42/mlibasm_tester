@@ -1,4 +1,4 @@
-#include "mlibasm_test.h"
+#include "mlibasm.h"
 
 t_tests	test[e_end];
 int		wrfd = 0, rdfd = 0, rdfd_true = 0;
@@ -16,13 +16,6 @@ void	ft_constructor(void)
 	test[STRLEN].fct_name = "ft_strlen"; test[STRDUP].fct_name = "ft_strdup";
 }
 
-void	done_on_all(char *str, int done, int all)
-{
-	char *color = (done == all ? "\e[0;92m" : "\e[0;91m");
-
-	printf("\e[0;1;96m%s: %s%d\e[0;1m/\e[92m%d\e[0m\n", str, color, done, all);
-}
-
 void	ft_destructor(void)
 {
 	int i = -1;
@@ -33,22 +26,8 @@ void	ft_destructor(void)
 	close(wrfd);
 	close(rdfd);
 	close(rdfd_true);
-}
-
-int		same_sign(int num1, int num2)
-{
-	return (((num1 == 0) == (num2 == 0)) && ((num1 < 0)  == (num2 < 0)));
-}
-
-void	ft_signal(int sign)
-{
-	(void)sign;
-	exit(1);
-}
-
-char	*tf_str(const int eq)
-{
-	return (eq ? "\e[0;92mTrue\e[0m" : "\e[0;91mFalse\e[0m");
+	if (CHECKLEAKS)
+		check_leaks();
 }
 
 void	truefalse(const int all_good, const int ret[2], const int err[2])
@@ -67,16 +46,6 @@ void	truefalse(const int all_good, const int ret[2], const int err[2])
 	if (!err_eq)
 		printf("Errno is \e[91m%d\t\e[mExpected \e[92m%d\e[m\n", err[0], err[1]);
 	printf("\n");
-}
-
-char	*which_fd(int fd)
-{
-	if (fd == 0) return ("stdin");
-	if (fd == 1) return ("stdout");
-	if (fd == 2) return ("stderr");
-	if (fd == rdfd) return ("rdfd");
-	if (fd == wrfd) return ("wrfd");
-	return ("fakefd");
 }
 
 static int	init(void)
