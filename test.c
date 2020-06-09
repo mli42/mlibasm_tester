@@ -1,16 +1,19 @@
 #include "mlibasm_test.h"
 
-// Globals
-int g_all = 26, g_wr_all = 12, g_rd_all = 14, g_strcmp_all = 0;
-int g_done = 0, g_fail = 0, g_wr = 0, g_rd = 0, g_strcmp = 0;
-int wrfd = 0, rdfd = 0, rdfd_true = 0;
+t_tests	test[e_end];
+int		wrfd = 0, rdfd = 0, rdfd_true = 0;
 char	err_buff[1024];
 
+void	__attribute__((constructor)) ft_constructor();
 void	__attribute__((destructor)) ft_destructor();
 
-int		same_sign(int num1, int num2)
+void	ft_constructor(void)
 {
-	return (((num1 == 0) == (num2 == 0)) && ((num1 < 0)  == (num2 < 0)));
+	bzero(test, sizeof(test));
+	test[TOTAL].fct_name = "TOTAL";
+	test[WR].fct_name = "ft_write"; test[RD].fct_name = "ft_read";
+	test[STRCMP].fct_name = "ft_strcmp"; test[STRCPY].fct_name = "ft_strcpy";
+	test[STRLEN].fct_name = "ft_strlen"; test[STRDUP].fct_name = "ft_strdup";
 }
 
 void	done_on_all(char *str, int done, int all)
@@ -22,15 +25,19 @@ void	done_on_all(char *str, int done, int all)
 
 void	ft_destructor(void)
 {
+	int i = -1;
 	printf("\t\t\033[0;1;91mTESTS FINISHED!\n");
-	done_on_all("Total", g_done - g_fail, g_all);
-	done_on_all("ft_write", g_wr, g_wr_all);
-	done_on_all("ft_read", g_rd, g_rd_all);
-	done_on_all("ft_strcmp", g_strcmp, g_strcmp_all);
+	while (++i < e_end)
+		done_on_all(test[i].fct_name, test[i].done, test[i].all);
 
 	close(wrfd);
 	close(rdfd);
 	close(rdfd_true);
+}
+
+int		same_sign(int num1, int num2)
+{
+	return (((num1 == 0) == (num2 == 0)) && ((num1 < 0)  == (num2 < 0)));
 }
 
 void	ft_signal(int sign)
@@ -46,15 +53,15 @@ char	*tf_str(const int eq)
 
 void	truefalse(const int all_good, const int ret[2], const int err[2])
 {
-	g_done++;
-	if (all_good) return ; g_fail++;
+	test[TOTAL].all++;
+	if (all_good) {test[TOTAL].done++; return ;}
 
 	int ret_eq = ret[0] == ret[1];
 	int err_eq = err[0] == err[1];
 	printf("\033[0;93m[%03d] " \
 			"\033[0;95mReturn %s " \
 			"\033[0;94mErrno %s : %s\n",
-			g_done, tf_str(ret_eq), tf_str(err_eq), err_buff);
+			test[TOTAL].all, tf_str(ret_eq), tf_str(err_eq), err_buff);
 	if (!ret_eq)
 		printf("Returned \e[91m%d\t\e[mExpected \e[92m%d\e[m\n", ret[0], ret[1]);
 	if (!err_eq)

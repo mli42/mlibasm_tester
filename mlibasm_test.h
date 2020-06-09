@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:06:51 by mli               #+#    #+#             */
-/*   Updated: 2020/06/09 18:20:26 by mli              ###   ########.fr       */
+/*   Updated: 2020/06/09 19:19:26 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,23 @@
 
 // # define MAKEITABORT 0
 
-extern int g_all, g_wr_all, g_rd_all, g_strcmp_all;
-extern int g_done, g_fail, g_wr, g_rd, g_strcmp;
-extern int wrfd, rdfd, rdfd_true;
+typedef struct	s_tests
+{
+	char	*fct_name;
+	int		done;
+	int		all;
+}				t_tests;
+
+enum			e_fct
+{
+	TOTAL,
+	WR, RD, STRCMP, STRLEN, STRCPY, STRDUP,
+	e_end
+};
+
+extern t_tests test[e_end];
+
+extern int wrfd, rdfd, rdfd_true, g_fail;
 extern char err_buff[1024];
 
 
