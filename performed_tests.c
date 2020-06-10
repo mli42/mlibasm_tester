@@ -56,3 +56,12 @@ void	strcmp_tests(void)
 	test_strcmp("or not", "Or not");
 	test_strcmp("or noT", "or not");
 }
+
+void	strcpy_tests()
+{
+	test_strcpy("", "");
+	test_strcpy("ah", "");
+	test_strcpy("hey", "ho");
+	test_strcpy("Ok this is more normal", "Yeayah");
+	test_strcpy("Ok this is more normal", "as it is written, normal.");
+}

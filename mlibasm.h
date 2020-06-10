@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:06:51 by mli               #+#    #+#             */
-/*   Updated: 2020/06/09 21:41:01 by mli              ###   ########.fr       */
+/*   Updated: 2020/06/10 23:59:25 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 // # define MAKEITABORT 0
 # define CHECKLEAKS 1
+# define STRCPY_SIZE 30
 
 typedef struct	s_tests
 {
@@ -50,13 +51,16 @@ void	ft_signal(int sign);
 char	*tf_str(const int eq);
 void	truefalse(const int all_good, const int ret[2], const int err[2]);
 char	*which_fd(int fd);
+
 void	wr_tests(void);
 void	rd_tests(void);
 void	strcmp_tests(void);
+void	strcpy_tests(void);
 
 int		test_write(const int fd, const char * const str, const int size);
 int		test_read(const int fd_me, const int fd_true, const int size);
 int		test_strcmp(const char * const s1, const char * const s2);
+int		test_strcpy(char const * const dst, char const * const srcs);
 
 void	check_leaks(void);
 

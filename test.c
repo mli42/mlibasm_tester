@@ -72,4 +72,5 @@ int		main(void)
 	wr_tests();
 	rd_tests();
 	strcmp_tests();
+	strcpy_tests();
 }
