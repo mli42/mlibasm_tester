@@ -39,5 +39,20 @@ void	rd_tests(void)
 
 void	strcmp_tests(void)
 {
+	test_strcmp("Hello", "Hello");
+	test_strcmp("Hello!", "Hello");
+	test_strcmp("Hello", "Hello!");
+	test_strcmp("He!!o", "Hello");
+	test_strcmp("Hello", "He!!o");
 
+	test_strcmp("Hello\tHi", "Hello\tHi");
+	test_strcmp("Hello\200Hi", "Hello\0Hi");
+	test_strcmp("Hello\0Hi", "Hello\200Hi");
+	test_strcmp("Hello\200Hi", "Hello\200Hi");
+	test_strcmp("Hello\0Hi", "Hello\0Hi");
+
+	test_strcmp("This string is longer", "This string is longer");
+	test_strcmp("You might pass all these tests", "Or not");
+	test_strcmp("or not", "Or not");
+	test_strcmp("or noT", "or not");
 }

@@ -49,6 +49,21 @@ int		test_read(const int fd_me, const int fd_true, const int size)
 
 int		test_strcmp(const char * const s1, const char * const s2)
 {
-	(void)s1; (void)s2;
-	return (1);
+	int err[2];
+	int ret[2];
+	int eq[2];
+	int all_good;
+
+	errno = 0; bzero(err_buff, sizeof(err_buff)); test[STRCMP].all++;
+	ret[0] = ft_strcmp(s1, s2);
+	err[0] = errno; errno = 0;
+	ret[1] = strcmp(s1, s2);
+	err[1] = errno;
+	eq[0] = same_sign(ret[0], ret[1]); eq[1] = (err[0] == err[1]);
+	if ((all_good = (eq[0] && eq[1])))
+		test[STRCMP].done++;
+	else
+		sprintf(err_buff, "ft_strcmp('%s', '%s')", s1, s2);
+	truefalse(all_good, ret, err);
+	return (all_good);
 }
