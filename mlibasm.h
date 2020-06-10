@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:06:51 by mli               #+#    #+#             */
-/*   Updated: 2020/06/10 23:59:25 by mli              ###   ########.fr       */
+/*   Updated: 2020/06/11 00:10:37 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,15 @@ void	wr_tests(void);
 void	rd_tests(void);
 void	strcmp_tests(void);
 void	strcpy_tests(void);
+void	strdup_tests(void);
+void	strlen_tests(void);
 
 int		test_write(const int fd, const char * const str, const int size);
 int		test_read(const int fd_me, const int fd_true, const int size);
 int		test_strcmp(const char * const s1, const char * const s2);
 int		test_strcpy(char const * const dst, char const * const srcs);
+int		test_strdup(char const *str);
+int		test_strlen(char const *str);
 
 void	check_leaks(void);
 

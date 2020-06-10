@@ -73,4 +73,6 @@ int		main(void)
 	rd_tests();
 	strcmp_tests();
 	strcpy_tests();
+	strdup_tests();
+	strlen_tests();
 }

@@ -65,3 +65,19 @@ void	strcpy_tests()
 	test_strcpy("Ok this is more normal", "Yeayah");
 	test_strcpy("Ok this is more normal", "as it is written, normal.");
 }
+
+void	strdup_tests()
+{
+	test_strdup("");
+	test_strdup("heyho");
+	test_strdup("heyyyyy!");
+	test_strdup("Hello this should work");
+}
+
+void	strlen_tests()
+{
+	test_strlen("");
+	test_strlen("heyho");
+	test_strlen("heyyyyy!");
+	test_strlen("Hello this should work");
+}
