@@ -10,8 +10,7 @@
 Go in your libasm repository and :
 
 ```bash
-git clone --recurse-submodules https://github.com/mli42/mlibasm_tester.git &&
-cd ./mlibasm_tester/ && ./do.sh
+git clone https://github.com/mli42/mlibasm_tester.git && cd ./mlibasm_tester/ && ./do.sh
 ```
 
 To test `errno` on `ft_strdup` : `./strdup_kill` and see if `errno == ENOMEM`
