@@ -20,12 +20,12 @@ Checks leaks by using `/usr/bin/leaks` :
 `#define CHECKLEAKS 0` (in `mlibasm.h`) to disable it
 
 ## Functions
-- [ ] ft_strlen
-- [ ] ft_strcpy
-- [ ] ft_strcmp
+- [x] ft_strlen
+- [x] ft_strcpy
+- [x] ft_strcmp
 - [x] ft_write
 - [x] ft_read
-- [ ] ft_strdup
+- [x] ft_strdup
 
 ## Bonus (from the piscine)
 ```c
