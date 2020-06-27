@@ -6,7 +6,7 @@
 #    By: mli <mli@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/27 15:59:43 by mli               #+#    #+#              #
-#    Updated: 2020/06/27 17:56:25 by mli              ###   ########.fr        #
+#    Updated: 2020/06/27 20:51:37 by mli              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = clang
 
 CFLAGS = -Wall -Wextra -Werror -I./
 
-SRCS_FILES = test.c utils.c
+SRCS_FILES = test.c utils.c lstutils.c
 SRCS_PATH = ./srcs/
 SRCS = ${addprefix ${SRCS_PATH}, ${SRCS_FILES}}
 
