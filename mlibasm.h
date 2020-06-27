@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:06:51 by mli               #+#    #+#             */
-/*   Updated: 2020/06/27 20:43:54 by mli              ###   ########.fr       */
+/*   Updated: 2020/06/27 22:54:31 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ int		test_strlen(char const *str);
 
 void	check_leaks(void);
 
+void	ft_print_list(t_list *lst);
 t_list	*ft_list_push_strs(int size, char **strs);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
+int		ft_lstcmp(t_list *lst1, t_list *lst2);
 
 #endif

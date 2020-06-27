@@ -6,11 +6,25 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/24 21:00:58 by mli               #+#    #+#             */
-/*   Updated: 2020/06/27 20:49:59 by mli              ###   ########.fr       */
+/*   Updated: 2020/06/27 22:38:27 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlibasm.h"
+
+int		ft_lstcmp(t_list *lst1, t_list *lst2)
+{
+	while (lst1)
+	{
+		if (!lst2 || strcmp(lst1->data, lst2->data))
+			return (1);
+		lst1 = lst1->next;
+		lst2 = lst2->next;
+	}
+	if (!lst1 && lst2)
+		return (1);
+	return (0);
+}
 
 void    ft_print_list(t_list *begin_list)
 {
