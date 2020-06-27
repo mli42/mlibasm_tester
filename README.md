@@ -18,6 +18,8 @@ To test `errno` on `ft_strdup` : `./strdup_kill` and see if `errno == ENOMEM`
 Checks leaks by using `/usr/bin/leaks` : 
 `#define CHECKLEAKS 0` (in `mlibasm.h`) to disable it
 
+Good news : It will check only what you have coded and compiled with your Makefile
+
 ## Functions
 - [x] ft_strlen
 - [x] ft_strcpy
