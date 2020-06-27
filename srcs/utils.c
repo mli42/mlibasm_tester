@@ -7,13 +7,13 @@ void	check_leaks(void)
 {
 	char * const *a = (char * const []){"leaks", __progname, NULL};
 
-	printf("\n\e[93mWhat about LEAKS ?!\e[0m\n\n");
 	if (fork() != 0)
 		sleep(1);
 	else
 	{
 		if (execve("/usr/bin/leaks", a, environ) == -1)
 			perror("NO, couldn't check leaks");
+		exit(1);
 	}
 }
 
