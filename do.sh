@@ -16,10 +16,9 @@ do_test () {
 }
 
 recompile () {
-	do_bonus = 1
-
+	do_bonus=0
 	if ! make bonus -C $libasm_path 1>/dev/null 2>/dev/null ; then
-		do_bonus = 0
+		do_bonus=1
 		printf "\e[0;91m\t\tCOULD'T COMPILE BONUS !!\e[0m\n" >&2
 		if ! make -C $libasm_path 1>/dev/null ; then
 			printf "\e[0;91m\t\tCOULD'T COMPILE !!\e[0m\n" >&2  && return 1
@@ -32,7 +31,7 @@ recompile () {
 	fi
 
 	do_test write.c read.c strlen.c strcmp.c strcpy.c strdup.c
-	if [ do_bonus ]; then
+	if [ $do_bonus -eq 0 ]; then
 		do_test atoi_base.c list_push_front.c list_size.c list_sort.c list_remove_if.c
 	fi
 	rm -f a.out
