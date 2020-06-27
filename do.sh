@@ -5,32 +5,38 @@ libasm=$libasm_path'libasm.a'
 incl_path=$libasm_path
 
 mlibasm_srcs='./srcs'
-# test_files='test.c unit_tests.c performed_tests.c utils.c'
 
 do_test () {
-	if ! make ; then
-		return 1
-	fi
 	for i in "$@"; do
-		if clang -Wall -Wextra -Werror -I./ $libasm mlibasm.a $mlibasm_srcs/$i ; then
+		if clang -Wall -Wextra -Werror -I./ $libasm mlibasm.a $mlibasm_srcs/$i \
+			2>/dev/null 1>&2 ; then
 			./a.out
 		fi
 	done
-	rm -f a.out
-	make fclean
 }
 
 recompile () {
+	do_bonus = 1
+
 	if ! make bonus -C $libasm_path 1>/dev/null 2>/dev/null ; then
+		do_bonus = 0
 		printf "\e[0;91m\t\tCOULD'T COMPILE BONUS !!\e[0m\n" >&2
 		if ! make -C $libasm_path 1>/dev/null ; then
 			printf "\e[0;91m\t\tCOULD'T COMPILE !!\e[0m\n" >&2  && return 1
 		fi
 	fi
+
+	if ! make ; then
+		echo "Oopsi"
+		return 1
+	fi
+
 	do_test write.c read.c strlen.c strcmp.c strcpy.c strdup.c
-#	if ! clang -Wall -Wextra -Werror -I $incl_path $test_files $libasm ; then
-#		printf "\e[0;91m\t\tCOULD'T COMPILE BINARY !!\e[0m\n" >&2  && return 1
-#	fi
+	if [ do_bonus ]; then
+		do_test atoi_base.c list_push_front.c list_size.c list_sort.c list_remove_if.c
+	fi
+	rm -f a.out
+	make fclean
 }
 
 printf "\e[0;1;94m"

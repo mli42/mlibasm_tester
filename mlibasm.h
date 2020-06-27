@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/09 18:06:51 by mli               #+#    #+#             */
-/*   Updated: 2020/06/27 16:22:49 by mli              ###   ########.fr       */
+/*   Updated: 2020/06/27 18:43:42 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ enum			e_fct
 {
 	TOTAL,
 	WR, RD, STRCMP, STRLEN, STRCPY, STRDUP,
+	ATOI_BASE, LIST_PUSH_FRONT, LIST_SIZE, LIST_SORT, LIST_REMOVE_IF,
 	e_end
 };
 

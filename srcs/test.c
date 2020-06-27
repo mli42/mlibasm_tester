@@ -22,6 +22,11 @@ void	ft_constructor(void)
 	test[WR].fct_name = "ft_write"; test[RD].fct_name = "ft_read";
 	test[STRCMP].fct_name = "ft_strcmp"; test[STRCPY].fct_name = "ft_strcpy";
 	test[STRLEN].fct_name = "ft_strlen"; test[STRDUP].fct_name = "ft_strdup";
+
+	test[ATOI_BASE].fct_name = "ft_atoi_base";
+	test[LIST_PUSH_FRONT].fct_name = "ft_list_push_front";
+	test[LIST_REMOVE_IF].fct_name = "ft_list_remove_if";
+	test[LIST_SIZE].fct_name = "ft_list_size"; test[LIST_SORT].fct_name = "ft_list_sort";
 }
 
 void	ft_destructor(void)
