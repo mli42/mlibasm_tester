@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/26 13:06:31 by mli               #+#    #+#             */
-/*   Updated: 2020/03/27 22:45:08 by mli              ###   ########.fr       */
+/*   Updated: 2020/07/03 19:18:46 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,9 @@ typedef struct	s_list
 
 int			ft_list_size(t_list *begin_list);
 void		ft_list_push_front(t_list **begin_list, void *data);
+int			ft_atoi_base(char *str, char *base);
+void		ft_list_sort(t_list **begin_list, int (*cmp)());
+void		ft_list_remove_if(t_list **lst, void *ref,
+						int (*cmp)(), void (*free_fct)(void *));
 
 #endif
