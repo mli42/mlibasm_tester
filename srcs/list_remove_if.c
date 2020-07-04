@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:15:24 by mli               #+#    #+#             */
-/*   Updated: 2020/07/04 13:44:35 by mli              ###   ########.fr       */
+/*   Updated: 2020/07/04 15:28:28 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int		less_cmp(char *a, char *b)
 
 int		even(char *a, char *b)
 {
-	(void)a;
-	return (b[0] % 2 ? 1 : 0);
+	(void)b;
+	return (a[0] % 2 ? 1 : 0);
 }
 
 void free_fct(void *a)
@@ -79,10 +79,10 @@ int		main(void)
 
 	test_list_remove_if(ft_list_push_strs(5, (char *[]){"3", "4", "5", "6", "7"}),
 		ft_list_push_strs(2, (char *[]){"3", "4"}),
-			"5", greater_cmp, free_fct);
+			"5", less_cmp, free_fct);
 	test_list_remove_if(ft_list_push_strs(5, (char *[]){"3", "4", "5", "6", "7"}),
 		ft_list_push_strs(3, (char *[]){"5", "6", "7"}),
-			"5", less_cmp, free_fct);
+			"5", greater_cmp, free_fct);
 	test_list_remove_if(ft_list_push_strs(5, (char *[]){"2", "3", "4", "5", "6"}),
 		ft_list_push_strs(2, (char *[]){"3", "5"}),
 			NULL, even, free_fct);
