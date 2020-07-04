@@ -36,11 +36,11 @@ typedef struct  s_list
     struct s_list *next;
 }           t_list;
 ```
-- [ ] ft_atoi_base
-- [ ] ft_list_push_front
-- [ ] ft_list_size
-- [ ] ft_list_sort
-- [ ] ft_list_remove_if
+- [x] ft_atoi_base
+- [x] ft_list_push_front
+- [x] ft_list_size
+- [x] ft_list_sort
+- [x] ft_list_remove_if
 
 ## Links
 `kill_malloc` comes from [this repo](https://github.com/ataguiro/mc)
