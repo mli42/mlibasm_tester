@@ -6,13 +6,14 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:14:35 by mli               #+#    #+#             */
-/*   Updated: 2020/06/27 15:53:24 by mli              ###   ########.fr       */
+/*   Updated: 2020/07/08 23:40:17 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlibasm.h"
 
 int g_fct = STRDUP;
+extern int fct_check_leaks;
 
 int		test_strdup(const char *str)
 {
@@ -42,6 +43,8 @@ int		test_strdup(const char *str)
 
 int		main(void)
 {
+	fct_check_leaks = 1;
+
 	test_strdup("");
 	test_strdup("heyho");
 	test_strdup("heyyyyy!");

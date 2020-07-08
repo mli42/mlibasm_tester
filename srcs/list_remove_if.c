@@ -6,13 +6,14 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:15:24 by mli               #+#    #+#             */
-/*   Updated: 2020/07/04 15:28:28 by mli              ###   ########.fr       */
+/*   Updated: 2020/07/08 23:39:41 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlibasm.h"
 
 int g_fct = LIST_REMOVE_IF;
+extern int fct_check_leaks;
 
 int		test_list_remove_if(t_list *lst, t_list *good, void *ref, int (*cmp)(),
 		void (*free_fct)(void *))
@@ -69,6 +70,8 @@ void free_fct(void *a)
 
 int		main(void)
 {
+	fct_check_leaks = 1;
+
 	test_list_remove_if(NULL, NULL, NULL, even, free_fct);
 	test_list_remove_if(ft_list_push_strs(1, (char *[]){"0"}), NULL, NULL,
 			even, free_fct);

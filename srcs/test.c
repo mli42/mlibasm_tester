@@ -4,6 +4,7 @@ t_tests	test[e_end];
 int		wrfd = 0, rdfd = 0, rdfd_true = 0;
 char	err_buff[1024];
 extern int g_fct;
+int		fct_check_leaks = 0;
 
 void	__attribute__((constructor)) ft_constructor();
 void	__attribute__((destructor)) ft_destructor();
@@ -36,7 +37,7 @@ void	ft_destructor(void)
 	close(wrfd);
 	close(rdfd);
 	close(rdfd_true);
-	if (CHECKLEAKS && g_fct == STRDUP)
+	if (CHECKLEAKS && fct_check_leaks)
 	{
 		printf("\n\e[93mWhat about %s's LEAKS ?!\e[0m\n\n", test[g_fct].fct_name); 
 		check_leaks();
