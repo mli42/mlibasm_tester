@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:15:24 by mli               #+#    #+#             */
-/*   Updated: 2020/07/03 20:56:04 by mli              ###   ########.fr       */
+/*   Updated: 2020/07/08 21:29:35 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ int		main(void)
 	test_atoi_base("-10abcdef", "0123456789ABCDEF", -16);
 	test_atoi_base("10abcdef", "0123456789ABCDEF", 16);
 	// Decimal
+	test_atoi_base("42", "0123456789", 42);
+	test_atoi_base(" \t \n \v \f \r 42", "0123456789", 42);
+	test_atoi_base(" \t \n \v \f \r 42+38", "0123456789", 42);
 	test_atoi_base("-42abcdef", "0123456789", -42);
 	test_atoi_base("28abcdef", "0123456789", 28);
 	test_atoi_base("2147483647abcdef", "0123456789", 2147483647);
@@ -81,4 +84,8 @@ int		main(void)
 	test_atoi_base("-42abcdef", "HEYYO", 0);
 	test_atoi_base("-42abcdef", "ABC011234", 0);
 	test_atoi_base("-42abcdef", "ABC012344", 0);
+	// Several {+/-}
+	test_atoi_base("-+42abcdef", "0123456789", -42);
+	test_atoi_base("-+-42abcdef", "0123456789", 42);
+	test_atoi_base("-+-++-+-+--+42abcdef", "0123456789", 42);
 }
