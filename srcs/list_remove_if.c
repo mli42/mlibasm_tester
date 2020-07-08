@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:15:24 by mli               #+#    #+#             */
-/*   Updated: 2020/07/08 23:39:41 by mli              ###   ########.fr       */
+/*   Updated: 2020/07/08 23:56:29 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,13 @@ int		even(char *a, char *b)
 
 void free_fct(void *a)
 {
-	(void)a;
+	if (a != NULL)
+	{
+		// ! Warning : push_strs pushes backwards
+		// Uncomment these two to verify if the content is actually deleted
+//		write(1, a, 1);
+//		write(1, "\n", 1);
+	}
 }
 
 int		main(void)
