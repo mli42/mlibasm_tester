@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:15:24 by mli               #+#    #+#             */
-/*   Updated: 2020/07/04 13:18:58 by mli              ###   ########.fr       */
+/*   Updated: 2020/07/09 19:17:16 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,24 @@ int		main(void)
 	test_list_sort(NULL, NULL, greater_cmp);
 	test_list_sort(ft_list_push_strs(1, (char *[]){"A"}),
 			ft_list_push_strs(1, (char *[]){"A"}), greater_cmp);
+	test_list_sort(ft_list_push_strs(2, (char *[]){"A", "B"}),
+			ft_list_push_strs(2, (char *[]){"B", "A"}), greater_cmp);
 	test_list_sort(ft_list_push_strs(4, (char *[]){"D", "C", "B", "A"}),
 			ft_list_push_strs(4, (char *[]){"D", "C", "B", "A"}), greater_cmp);
 	test_list_sort(ft_list_push_strs(4, (char *[]){"A", "B", "C", "D"}),
 			ft_list_push_strs(4, (char *[]){"D", "C", "B", "A"}), greater_cmp);
 	test_list_sort(ft_list_push_strs(4, (char *[]){"D", "B", "C", "A"}),
 			ft_list_push_strs(4, (char *[]){"D", "C", "B", "A"}), greater_cmp);
+	test_list_sort(ft_list_push_strs(4, (char *[]){"D", "C", "A", "B"}),
+			ft_list_push_strs(4, (char *[]){"D", "C", "B", "A"}), greater_cmp);
+	test_list_sort(ft_list_push_strs(4, (char *[]){"C", "D", "B", "A"}),
+			ft_list_push_strs(4, (char *[]){"D", "C", "B", "A"}), greater_cmp);
+	test_list_sort(ft_list_push_strs(26, (char *[]){
+	"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O",
+	"P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"}),
+			ft_list_push_strs(26, (char *[]){
+	"Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N", "M", "L",
+	"K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A"}), greater_cmp);
+	test_list_sort(ft_list_push_strs(4, (char *[]){"A", "C", "A", "B"}),
+			ft_list_push_strs(4, (char *[]){"C", "B", "A", "A"}), greater_cmp);
 }
