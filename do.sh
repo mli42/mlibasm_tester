@@ -8,7 +8,7 @@ mlibasm_srcs='./srcs'
 
 do_test () {
 	for i in "$@"; do
-		if clang -Wall -Wextra -Werror -I./ $libasm mlibasm.a $mlibasm_srcs/$i \
+		if clang -Wall -Wextra -Werror -I./ $mlibasm_srcs/$i $libasm mlibasm.a \
 			2>/dev/null 1>&2 ; then
 			./a.out
 		fi
