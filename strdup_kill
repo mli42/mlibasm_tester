@@ -1,3 +1,13 @@
+#!/usr/bin/env zsh
+
 LIBASM_PATH=../
 LIBASM_SRCS=./srcs/
-make -C $LIBASM_PATH && clang $LIBASM_SRCS/strdup_test.c $LIBASM_PATH/libasm.a -I./ && python kill_malloc/mc.py
+if [ "$OSTYPE" = "linux-gnu" ]; then
+	kill_malloc_py="./kill_malloc/mc_linux.py"
+else
+	kill_malloc_py="./kill_malloc/mc.py"
+fi
+
+make -C $LIBASM_PATH && \
+	clang $LIBASM_SRCS/strdup_test.c $LIBASM_PATH/libasm.a -I./ && \
+	python $kill_malloc_py

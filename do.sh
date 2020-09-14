@@ -6,9 +6,15 @@ incl_path=$libasm_path
 
 mlibasm_srcs='./srcs'
 
+mli_cc="clang"
+mli_cflags="-Wall -Wextra -Werror"
+if [ "$OSTYPE" = "linux-gnu" ]; then
+	mli_cflags+=" -fsanitize=address -g3"
+fi
+
 do_test () {
 	for i in "$@"; do
-		if clang -Wall -Wextra -Werror -I./ $mlibasm_srcs/$i $libasm mlibasm.a \
+		if $mli_cc $mli_cflags -I./ $mlibasm_srcs/$i $libasm mlibasm.a \
 			2>/dev/null 1>&2 ; then
 			./a.out
 		fi
@@ -52,6 +58,6 @@ printf "#                                                                       
 printf "# ****************************************************************************** #\n\n"
 printf "\e[0m"
 
+make fclean -C $libasm_path > /dev/null
 recompile
-
 make fclean -C $libasm_path > /dev/null
