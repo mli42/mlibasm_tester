@@ -10,6 +10,7 @@ mli_cc="clang"
 mli_cflags="-Wall -Wextra -Werror"
 if [ "$OSTYPE" = "linux-gnu" ]; then
 	mli_cflags+=" -fsanitize=address -g3"
+	sed s/"CHECKLEAKS 1"/"CHECKLEAKS 0"/g ./mlibasm.h -i
 fi
 
 do_test () {
