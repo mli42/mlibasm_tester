@@ -11,7 +11,7 @@ void	__attribute__((destructor)) ft_destructor();
 
 void	ft_constructor(void)
 {
-	if ((wrfd = open("output", O_WRONLY | O_CREAT | O_TRUNC,
+	if ((wrfd = open("output", O_WRONLY | O_CREAT,
 					S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)) < 0)
 		exit (1);
 	if ((rdfd = open("output", O_RDONLY)) < 0)

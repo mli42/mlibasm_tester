@@ -62,3 +62,4 @@ printf "\e[0m"
 make fclean -C $libasm_path > /dev/null
 recompile
 make fclean -C $libasm_path > /dev/null
+rm -f ./output
