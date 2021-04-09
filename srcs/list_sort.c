@@ -6,7 +6,7 @@
 /*   By: mli <mli@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/27 15:15:24 by mli               #+#    #+#             */
-/*   Updated: 2020/07/09 19:17:16 by mli              ###   ########.fr       */
+/*   Updated: 2021/04/09 17:07:28 by mli              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		test_list_sort(t_list *lst, t_list *good, int (*cmp)())
 
 static int	greater_cmp(char *a, char *b)
 {
-	return (a[0] >= b[0] ? 1 : 0);
+	return (a[0] > b[0] ? 1 : 0);
 }
 
 int		main(void)
