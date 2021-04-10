@@ -1,8 +1,7 @@
 # mlibasm_tester
 
 <p align="center">
-  <img src="https://github.com/mli42/mlibasm_tester/blob/master/mlibasm.png"
-       title="mlibasm img">
+        <img src="./mlibasm.gif" >
 </p>
 
 ## Usage
@@ -13,12 +12,16 @@ Go in your libasm repository and :
 git clone https://github.com/mli42/mlibasm_tester.git && cd ./mlibasm_tester/ && ./do.sh
 ```
 
-To test `errno` on `ft_strdup` : `./strdup_kill` and see if `errno == ENOMEM`
+To test `errno` on `ft_strdup`:  
+`./strdup_kill` and see if `errno == ENOMEM`
 
-Checks leaks by using `/usr/bin/leaks` : 
+Checks leaks by using `/usr/bin/leaks`:  
 `#define CHECKLEAKS 0` (in `mlibasm.h`) to disable it
 
 Good news : It will check only what you have coded and compiled with your Makefile
+
+/!\ Warning: If it only prints the header, there is a compilation problem  
+Delete the redirections in `do.sh` to see what's really happening
 
 ## Functions
 - [x] ft_strlen
